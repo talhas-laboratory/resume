@@ -1,0 +1,297 @@
+:root {
+    --bg-color: #000000;
+    --card-bg: #1c1c1e;
+    --accent: #ffffff;
+    --text-sec: #8e8e93;
+    --primary: #0a84ff;
+    --nav-height: 80px;
+    /* Increased for better touch targets and safe area */
+    --header-height: 60px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--accent);
+    height: 100vh;
+    overflow: hidden;
+    /* Prevent body scroll, handle in main */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.app-header {
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+}
+
+.dot {
+    color: var(--primary);
+}
+
+.status-indicator {
+    font-size: 0.75rem;
+    color: #30d158;
+    background: rgba(48, 209, 88, 0.1);
+    padding: 4px 12px;
+    border: 1px solid #30d158;
+    font-weight: 600;
+}
+
+/* Main Content - Snap Scroll */
+.app-content {
+    flex: 1;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    height: 100vh;
+    padding-bottom: var(--nav-height);
+    /* Space for bottom nav */
+    scroll-behavior: smooth;
+}
+
+.app-section {
+    height: 100vh;
+    scroll-snap-align: start;
+    padding: var(--header-height) 20px var(--nav-height) 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+.section-desc {
+    color: var(--text-sec);
+    margin-bottom: 2rem;
+}
+
+/* Hero Section */
+.hero-section {
+    justify-content: center;
+    text-align: left;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    line-height: 1;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text-sec);
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-sec);
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--accent);
+    color: var(--bg-color);
+    font-weight: 700;
+    border: 3px solid var(--bg-color);
+    box-shadow: 4px 4px 0px var(--bg-color);
+    cursor: pointer;
+    transition: transform 0.1s;
+    text-transform: uppercase;
+}
+
+.cta-button:active {
+    transform: scale(0.95);
+}
+
+/* Work Section */
+.work-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+    margin: 0 -20px;
+    /* Bleed to edges */
+    padding: 0 20px 20px 20px;
+}
+
+.work-card {
+    min-width: 280px;
+    background: var(--card-bg);
+    border: 3px solid var(--accent);
+    overflow: hidden;
+    scroll-snap-align: center;
+    box-shadow: 6px 6px 0px var(--accent);
+}
+
+.card-image {
+    height: 180px;
+    width: 100%;
+}
+
+.card-info {
+    padding: 20px;
+}
+
+.card-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.card-info p {
+    color: var(--text-sec);
+    font-size: 0.9rem;
+}
+
+/* Agent Section */
+.mobile-workflow-container {
+    width: 100%;
+    flex: 1;
+    background: #111;
+    overflow: hidden;
+    border: 3px solid var(--accent);
+    margin-bottom: 20px;
+    box-shadow: 6px 6px 0px var(--accent);
+}
+
+#n8n-root {
+    height: 100% !important;
+    /* Override inline style */
+}
+
+/* Contact Section */
+.profile-card {
+    background: var(--card-bg);
+    border: 3px solid var(--accent);
+    padding: 30px;
+    text-align: center;
+    box-shadow: 6px 6px 0px var(--accent);
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-item .num {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.stat-item .lbl {
+    font-size: 0.8rem;
+    color: var(--text-sec);
+    text-transform: uppercase;
+}
+
+.contact-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.action-btn {
+    padding: 16px;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid var(--accent);
+    text-transform: uppercase;
+    transition: all 0.1s;
+}
+
+.action-btn.primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: 4px 4px 0px var(--accent);
+}
+
+.action-btn.secondary {
+    background: transparent;
+    color: white;
+}
+
+/* Command Dock (Neobrutalist) */
+.command-dock {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: 90%;
+    max-width: 400px;
+}
+
+.dock-container {
+    display: flex;
+    justify-content: space-between;
+    background: #000;
+    border: 2px solid #fff;
+    padding: 8px;
+    box-shadow: 4px 4px 0px #fff;
+}
+
+.dock-btn {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Inter', monospace;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 10px 0;
+    text-transform: uppercase;
+    transition: all 0.1s ease;
+}
+
+.dock-btn.active {
+    background: #fff;
+    color: #000;
+}
+
+.dock-btn:active {
+    transform: translateY(2px);
+}

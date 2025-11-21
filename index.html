@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talha Uddin | Creative Strategist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="n8n-assets/index-BrPcZBSq.css">
+    <link rel="stylesheet" href="https://unpkg.com/reactflow@11.10.1/dist/style.css">
+</head>
+
+<body>
+    <div class="cursor" id="cursor"></div>
+    <div class="noise-overlay"></div>
+
+    <nav class="navbar">
+        <div class="logo">TU<span class="dot">.</span></div>
+        <div class="menu-btn">MENU</div>
+    </nav>
+
+    <div class="scroll-container">
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-text">
+                <h1 class="reveal-text">DATA MEETS</h1>
+                <h1 class="reveal-text italic">STORYTELLING</h1>
+            </div>
+            <div class="hero-sub">
+                <p>Talha Uddin</p>
+                <p>Marketer</p>
+                <p>Based in Germany</p>
+            </div>
+            <div class="scroll-indicator">SCROLL TO EXPLORE</div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section class="work-section" id="work">
+            <div class="work-header">
+                <h2>EXPERIENCE<br><span class="header-subtitle">(2020 — Present)</span></h2>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <!-- Timeline Item 1: Disney -->
+                <div class="timeline-item" data-id="disney">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Oct 2020 – Apr 2021</div>
+                        <div class="timeline-logo-wrapper">
+                            <img src="refs/logos/The_Walt_Disney_Company_Logo.svg" alt="Disney"
+                                class="timeline-logo">
+                        </div>
+                        <h3>Brand Marketing</h3>
+                        <p class="company">The Walt Disney Company</p>
+                        <div class="read-more-note">Click to read more</div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2: Samsung -->
+                <div class="timeline-item" data-id="samsung">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Oct 2021 – Mar 2022</div>
+                        <div class="timeline-logo-wrapper">
+                            <img src="refs/logos/Samsung_wordmark.svg" alt="Samsung" class="timeline-logo">
+                        </div>
+                        <h3>Retail Marketing</h3>
+                        <p class="company">Samsung Electronics</p>
+                        <div class="read-more-note">Click to read more</div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3: About You -->
+                <div class="timeline-item" data-id="aboutyou">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Sep 2022 – Aug 2023</div>
+                        <div class="timeline-logo-wrapper">
+                            <img src="refs/logos/About_You_logo.svg.png" alt="About You" class="timeline-logo">
+                        </div>
+                        <h3>Performance Marketing</h3>
+                        <p class="company">About You</p>
+                        <div class="read-more-note">Click to read more</div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4: Cheil -->
+                <div class="timeline-item" data-id="cheil">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Apr 2024 – Present</div>
+                        <div class="timeline-logo-wrapper">
+                            <img src="refs/logos/Cheil_Worldwide_logo.svg.png" alt="Cheil" class="timeline-logo">
+                        </div>
+                        <h3>Account Manager</h3>
+                        <p class="company">Cheil Germany</p>
+                        <div class="read-more-note">Click to read more</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section" id="skills">
+            <div class="skills-header">
+                <h2>SKILLS<br><span class="header-subtitle">Technical & Creative Stack</span></h2>
+            </div>
+            <div class="skills-grid">
+                <!-- Skill 1: N8n -->
+                <div class="skill-card" data-id="n8n">
+                    <div class="skill-icon">
+                        <img src="refs/logos/N8n-logo-new.svg.png" alt="n8n">
+                    </div>
+                    <h3>n8n Automation</h3>
+                    <p>AI Agents & Workflows</p>
+                </div>
+
+                <!-- Skill 2: LangChain -->
+                <div class="skill-card" data-id="langchain">
+                    <div class="skill-icon">
+                        <img src="refs/logos/LangChain_Logo.svg.png" alt="LangChain">
+                    </div>
+                    <h3>LangChain</h3>
+                    <p>LLM Applications</p>
+                </div>
+
+                <!-- Skill 3: Web Design -->
+                <div class="skill-card" data-id="webdesign">
+                    <div class="skill-icon">
+                        <img src="refs/logos/cursor-.png" alt="Cursor">
+                    </div>
+                    <h3>Web Design</h3>
+                    <p>UX & Frontend</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popup Modal -->
+        <div class="modal-overlay" id="modal-overlay">
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <div class="modal-body" id="modal-body">
+                    <!-- Content injected via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Education (Keep as is, just minor cleanup if needed) -->
+        <section class="details-section" id="details">
+            <div class="work-header">
+                <h2>EDUCATION</h2>
+            </div>
+            <div class="details-grid">
+                <div class="col">
+                    <ul class="list-items">
+                        <li>
+                            <span class="title">B.Sc. Economic Science</span>
+                            <span class="meta">Goethe University Frankfurt</span>
+                            <span class="description">Focus on Management & Marketing. <br> Bachelor Thesis: Performativity &amp; Identity Construction. How subcultural value is created through consumption.</span>
+                        </li>
+                        <li>
+                            <span class="title">M.Sc. Marketing Management</span>
+                            <span class="meta">Rotterdam School of Management</span>
+                            <span class="description">Master Thesis: “Consuming to be different – Does consumers’ need for uniqueness predict brand loyalty for self-expressive brands?”</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" id="contact">
+            <div class="footer-content">
+                <h2>LET'S BUILD<br>THE FUTURE.</h2>
+                <div class="contact-links">
+                    <a href="mailto:talhauddin@outlook.de" class="hover-link">talhauddin@outlook.de</a>
+                    <a href="tel:+4915757141876" class="hover-link">+49 1575 7141876</a>
+                </div>
+                <div class="footer-meta">
+                    <span>© 2025 Talha Uddin</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+    <script src="workflow.js"></script>
+</body>
+
+</html>
