@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>A personal highlight of the internship was leading my own standalone project, the Disney Kindergarten Prize 2021. I handled concept development, planning, and execution, which taught me how to manage timelines, stakeholders, and creative output independently.</p>
                 <p>The most defining experience, however, was the Disney Princess Campaign. I was entrusted with creating the storyboard and full script for the nationwide TV spot — a responsibility that fundamentally shaped my creative approach. The challenge in this project was unique: there was no budget to shoot new footage, meaning I had to craft an entirely new story using only existing video material. I had to reverse the typical workflow: instead of writing a script that would later be filmed, I needed to analyze the available footage, understand its emotional beats, and build a coherent narrative around what already existed. Writing the script and shaping the spot under these constraints taught me to think more resourcefully, creatively, and strategically — and it became the highlight of my internship.</p>
                 <p>Working at Disney taught me how powerful well-crafted stories can be, and how much impact clear, thoughtful creative direction has — even when the constraints seem limiting. It is the place where my passion for storytelling, psychology, and brand communication first converged in a meaningful way, and it continues to influence how I approach creative work today.</p>
+                <video controls style="width: 100%; margin-top: 20px; border: 1px solid rgba(0,0,0,0.1);">
+                    <source src="assets/disney-princess-tv-spot.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p style="margin-top: 12px; font-style: italic;">(p.s. I guess the essence of the spot makes more sense for German speakers :D)</p>
             `
         },
         samsung: {
@@ -70,49 +75,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const skillsData = {
-        n8n: {
-            title: "n8n Automation",
-            subtitle: "AI Agents & Workflows",
-            description: `
-                <p>One of the most impactful skill sets I developed is building automated workflows and AI-powered tools using n8n, Python, and LLM-based agents. What started as a personal interest quickly turned into practical systems that solve real marketing problems.</p>
-                <p>A core project was the creation of an automated research and outreach engine. Using n8n and an LLM-based agent, I built a workflow that could analyze any lead, gather relevant public data, extract key context, and generate a fully personalized outreach message tailored to that individual. Instead of sending generic cold emails, the system produced outreach that felt human, informed, and specific — dramatically increasing the quality of lead interactions.</p>
-                <p>I first built this system for my own use, but later adapted a version for a friend in the insurance industry, where highly personalized outreach is essential. The workflow automatically researched each insurance lead, identified their needs and background, and drafted a compelling, natural-sounding email that my friend could send with minimal editing. Seeing how much time this saved — and how much more thoughtful and effective the communication became — showed me how powerful AI-assisted marketing operations can be in practice.</p>
-                <p>This project taught me how to structure complex automation chains, design reliable workflows, and combine creativity with technical precision. More importantly, it sparked my interest in building AI tools that make marketing more efficient, more personal, and more human at scale.</p>
-                <div id="n8n-modal-container" style="height: 400px; width: 100%; border: 1px solid #333; border-radius: 8px; margin-top: 20px; overflow: hidden; background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #333;">
-                    Loading workflow...
-                </div>
-            `
-        },
-        langchain: {
-            title: "Cursor / LangChain",
-            subtitle: "LLM Applications",
-            description: `
-                <p>Alongside my operational work, I’ve increasingly focused on building AI-powered tools that give brands deeper insight into how they appear across modern digital ecosystems. One of my key projects was the development of a first-version AEO Audit Tool — a system designed to track brand mentions, visibility, and sentiment across major LLM platforms. As large language models become a primary interface for information retrieval, understanding how a brand is represented inside them is becoming just as important as traditional SEO.</p>
-                <p>The tool aggregates responses from different LLMs, analyzes tone and sentiment, identifies inconsistencies, and highlights opportunities to improve brand presence in AI-driven environments. This project helped me understand how rapidly the information landscape is shifting — and how brands need new forms of monitoring to stay visible and consistent.</p>
-                <p>Building on this, I started developing a Customer Simulation Engine: an AI system that predicts how different user segments might react to specific ad concepts, messages, or creative directions. The goal is to allow marketers to test ideas before they go live — using simulated “customer agents” that behave according to psychological, demographic, and contextual cues. While early in development, it has already shown that AI can provide meaningful directional insights long before media spend is involved.</p>
-                <p>Both tools reflect my interest in designing systems that sit at the intersection of marketing strategy, data, and AI. They’ve allowed me to think beyond execution and explore how new technologies can give brands a more accurate, dynamic understanding of how they are perceived — and how they can communicate more effectively.</p>
-                <div style="margin-top: 20px;">
-                    <img src="../refs/langchain.png" alt="LangChain persona insights" style="width: 100%; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.15);">
-                </div>
-            `
-        },
-        webdesign: {
-            title: "Web Design",
-            subtitle: "UX & Frontend",
-            description: `
-                <p>In addition to my marketing and automation work, I’ve developed practical skills in web design, UX thinking, and the creation of domain-specific chatbots using Retrieval-Augmented Generation (RAG). These projects grew out of real needs from people around me and showed me how powerful technical tools become when they solve concrete problems.</p>
-                <p>For a friend working in the insurance industry, I designed and built an entire company website, including structure, content, and front-end implementation. The goal was to create a clean, trustworthy online presence that communicated complex insurance offerings in a simple and customer-friendly way. This project taught me how to translate business goals into design decisions — from layout and hierarchy to tone and visual identity.</p>
-                <p>Alongside the website, I built a custom RAG-based chatbot that could answer domain-specific insurance questions. The chatbot uses curated documents, internal guidelines, and product information as its knowledge base, allowing it to respond with accurate, context-relevant answers instead of generic AI responses. It serves as both a customer-facing assistant and an internal tool for quick information access.</p>
-                <p>Working on these projects helped me understand the full stack of digital product creation — from designing the surface to building the intelligence behind it. More importantly, they showed me how web and AI technology can make complex services more accessible, responsive, and user-centered.</p>
-                <div style="margin-top: 20px;">
-                    <img src="assets/langchain_screenshot.png" alt="Web Design Project Screenshot" style="width: 100%; border-radius: 8px; border: 1px solid #333;">
-                </div>
-            `
-        }
-    };
+    // --- Accordion Skills Logic ---
+    let currentlyExpanded = null;
+    let workflowMounted = false;
+    const skillCards = document.querySelectorAll('.skill-card');
+    const skillsGrid = document.querySelector('.skills-grid');
 
-    // --- Modal Logic ---
+    function mountWorkflow() {
+        if (workflowMounted) return;
+        setTimeout(() => {
+            if (window.renderWorkflow) {
+                window.renderWorkflow('n8n-modal-container');
+                workflowMounted = true;
+            }
+        }, 250);
+    }
+
+    function expandCard(card) {
+        if (currentlyExpanded === card) return;
+        if (currentlyExpanded) {
+            currentlyExpanded.classList.remove('expanded');
+        }
+        card.classList.add('expanded');
+        currentlyExpanded = card;
+
+        if (card.getAttribute('data-id') === 'n8n') {
+            mountWorkflow();
+        }
+    }
+
+    function collapseCards() {
+        if (!currentlyExpanded) return;
+        currentlyExpanded.classList.remove('expanded');
+        currentlyExpanded = null;
+    }
+
+    skillCards.forEach(card => {
+        card.addEventListener('mouseenter', () => expandCard(card));
+    });
+
+    if (skillsGrid) {
+        skillsGrid.addEventListener('mouseleave', () => {
+            collapseCards();
+        });
+    }
+
+    // --- Modal Logic for Experience Cards Only ---
     const modalOverlay = document.getElementById('modal-overlay');
     const modalBody = document.getElementById('modal-body');
     const modalClose = document.querySelector('.modal-close');
@@ -121,8 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let data;
         if (type === 'experience') {
             data = experienceData[id];
-        } else if (type === 'skill') {
-            data = skillsData[id];
         }
 
         if (!data) return;
@@ -134,8 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
             roleLine = `${data.title} | ${data.period}`;
         } else if (data.period) {
             roleLine = data.period;
-        } else if (data.subtitle) {
-            roleLine = data.subtitle;
         }
 
         modalBody.innerHTML = `
@@ -144,36 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="modal-desc">${data.description}</div>
         `;
 
-        // Special handling for N8n to show React Flow
-        if (id === 'n8n') {
-            // Poll for renderWorkflow function
-            let attempts = 0;
-            const maxAttempts = 50; // 5 seconds
-            const interval = setInterval(() => {
-                if (window.renderWorkflow) {
-                    clearInterval(interval);
-                    window.renderWorkflow('n8n-modal-container');
-                } else {
-                    attempts++;
-                    if (attempts >= maxAttempts) {
-                        clearInterval(interval);
-                        const container = document.getElementById('n8n-modal-container');
-                        if (container) {
-                            container.innerHTML = '<div style="color: red; padding: 20px;">Failed to load workflow script. Please check your connection.</div>';
-                        }
-                        console.error("renderWorkflow function timed out");
-                    }
-                }
-            }, 100);
-        }
-
         modalOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
-
-    // Removed renderStaticWorkflow function as we are using React Flow again
-
-
 
     function closeModal() {
         modalOverlay.classList.remove('active');
@@ -184,13 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('click', () => {
             const id = item.getAttribute('data-id');
             openModal('experience', id);
-        });
-    });
-
-    document.querySelectorAll('.skill-card').forEach(item => {
-        item.addEventListener('click', () => {
-            const id = item.getAttribute('data-id');
-            openModal('skill', id);
         });
     });
 
